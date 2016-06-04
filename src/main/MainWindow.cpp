@@ -30,6 +30,7 @@
 #include "DigitSegment.xpm"
 #include "DigitSelect.xpm"
 #include "DlgAbout.h"
+#include "DlgEquations.h"
 #include "DlgErrorReport.h"
 #include "DlgImportAdvanced.h"
 #include "DlgRequiresTransform.h"
@@ -277,6 +278,7 @@ void MainWindow::createActions()
   createActionsDigitize ();
   createActionsView ();
   createActionsSettings ();
+  createActionsPostProcess ();
   createActionsHelp ();
 }
 
@@ -505,6 +507,19 @@ void MainWindow::createActionsFile ()
   m_actionExit->setWhatsThis (tr ("Exit\n\n"
                                   "Quits the application."));
   connect (m_actionExit, SIGNAL (triggered ()), this, SLOT (close ()));
+}
+
+void MainWindow::createActionsPostProcess ()
+{
+  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::createActionsPostProcess";
+
+  m_actionPostProcessEquations = new QAction(tr ("Postprocess"), this);
+  m_actionPostProcessEquations->setStatusTip (tr ("Fits one or more equations to the currently selected curve."));
+  m_actionPostProcessEquations->setWhatsThis (tr ("Formulas\n\n"
+                                                  "Fits one or more equations to the currently selected curve. "
+                                                  "The fitted equations are ranked by how well they fit the data so "
+                                                  "the equation with the best fit can be identified and exported."));
+  connect (m_actionPostProcessEquations, SIGNAL (triggered ()), this, SLOT (slotPostProcessFormulas()));
 }
 
 void MainWindow::createActionsHelp ()
@@ -1001,6 +1016,9 @@ void MainWindow::createMenus()
   m_menuSettings->insertSeparator (m_actionSettingsGeneral);
   m_menuSettings->addAction (m_actionSettingsGeneral);
   m_menuSettings->addAction (m_actionSettingsMainWindow);
+
+  m_menuPostprocess = menuBar()->addMenu(tr("Postprocess"));
+  m_menuPostprocess->addAction (m_actionPostProcessEquations);
 
   m_menuHelp = menuBar()->addMenu(tr("&Help"));
   m_menuHelp->addAction (m_actionHelpChecklistGuideWizard);
@@ -3028,6 +3046,14 @@ void MainWindow::slotMouseRelease (QPointF pos)
     m_digitizeStateContext->handleMouseRelease (m_cmdMediator,
                                                 pos);
   }
+}
+
+void MainWindow::slotPostProcessFormulas()
+{
+  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotPostProcessFormulas";
+
+  DlgEquations dlg;
+  dlg.exec ();
 }
 
 void MainWindow::slotRecentFileAction ()

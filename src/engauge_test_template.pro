@@ -132,6 +132,7 @@ HEADERS  += \
     DigitizeState/DigitizeStateSelect.h \
     Dlg/DlgAbout.h \
     Dlg/DlgEditPoint.h \
+    Dlg/DlgEquations.h \
     Dlg/DlgErrorReport.h \
     Dlg/DlgFilterCommand.h \
     Dlg/DlgFilterThread.h \
@@ -421,6 +422,7 @@ SOURCES += \
     DigitizeState/DigitizeStateSelect.cpp \
     Dlg/DlgAbout.cpp \
     Dlg/DlgEditPoint.cpp \
+    Dlg/DlgEquations.cpp \
     Dlg/DlgErrorReport.cpp \
     Dlg/DlgFilterCommand.cpp \
     Dlg/DlgFilterThread.cpp \

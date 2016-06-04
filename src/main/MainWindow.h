@@ -28,6 +28,7 @@ class CmdMediator;
 class CmdStackShadow;
 class CurveStyles;
 class DigitizeStateContext;
+class DlgEquations;
 class DlgSettingsAxesChecker;
 class DlgSettingsColorFilter;
 class DlgSettingsCoords;
@@ -266,6 +267,7 @@ private slots:
   void slotMouseMove (QPointF);
   void slotMousePress (QPointF);
   void slotMouseRelease (QPointF);
+  void slotPostProcessFormulas ();
   void slotRecentFileAction ();
   void slotRecentFileClear ();
   void slotRedoTextChanged (const QString &);
@@ -331,6 +333,7 @@ private:
   void createActionsEdit ();
   void createActionsFile ();
   void createActionsHelp ();
+  void createActionsPostProcess ();
   void createActionsSettings ();
   void createActionsView ();
   void createCentralWidget ();
@@ -500,6 +503,9 @@ private:
   QAction *m_actionSettingsPointMatch;
   QAction *m_actionSettingsSegments;
 
+  QMenu *m_menuPostprocess;
+  QAction *m_actionPostProcessEquations;
+
   QMenu *m_menuHelp;
   QAction *m_actionHelpAbout;
   QAction *m_actionHelpChecklistGuideWizard;
@@ -546,6 +552,8 @@ private:
   // State machine for background image
   BackgroundStateContext *m_backgroundStateContext;
 
+  // Dialogs are created once at startup so their geometry stays consistent from one appearance to the next
+  DlgEquations *m_dlgEquations;
   DlgSettingsAxesChecker *m_dlgSettingsAxesChecker;
   DlgSettingsColorFilter *m_dlgSettingsColorFilter;
   DlgSettingsCoords *m_dlgSettingsCoords;
