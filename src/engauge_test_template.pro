@@ -176,6 +176,7 @@ HEADERS  += \
     Document/DocumentSerialize.h \
     include/EngaugeAssert.h \
     util/EnumsToQt.h \
+    Equation/Equation.h \
     Export/ExportAlignLinear.h \
     Export/ExportAlignLog.h \
     Export/ExportDelimiter.h \
@@ -463,6 +464,7 @@ SOURCES += \
     Document/DocumentModelSegments.cpp \
     Document/DocumentSerialize.cpp \
     util/EnumsToQt.cpp \
+    Equation/Equation.cpp \
     Export/ExportAlignLinear.cpp \
     Export/ExportAlignLog.cpp \
     Export/ExportDelimiter.cpp \
@@ -611,6 +613,7 @@ INCLUDEPATH += Background \
                DigitizeState \
                Dlg \
                Document \
+               Equation \
                Export \
                FileCmd \
                Filter \
