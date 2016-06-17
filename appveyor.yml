@@ -75,7 +75,7 @@ after_build:
   - move engauge.qch ..\%RESULTDIR%\documentation
   - move engauge.qhc ..\%RESULTDIR%\documentation
   - cd ..
-  - 7z a %RESULTDIR%.zip %RESULTDIR%
+  - 7z a %RESULTDIR%.7z %RESULTDIR%
 
 artifacts:
   - path: engauge-build*.zip
